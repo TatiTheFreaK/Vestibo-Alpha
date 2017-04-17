@@ -1,7 +1,23 @@
 <html>
    <head>
       <meta charset="utf-8">
+      <?php
+      require_once('../accounts/config/config.php');
+      require_once('../accounts/classes/Login.php');
+      $login = new Login();
+
+      if ($login->isUserLoggedIn() == false) {
+          Header('Location: ../entrar.php');
+      }
+
+      if ($_SESSION['user_name'] != 'will15') {
+         if($_SESSION['user_name'] != 'baronis') {
+            die("<br><b><h1>Você não é o William!</h1></b>");
+         }
+      }
+      ?>
       <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+      <script src="ckeditor/ckeditor.js"></script>
       <title>Cadastrar questões - VESTIBO LAB</title>
    </head>
    <body>
@@ -18,52 +34,53 @@
                <br>
                <input type="text" class="campo" name="num" value="" placeholder="Número da Questão" maxlength="4">
                <br>
-               <textarea class="campo" rows="4" cols="50" placeholder="Texto 1" name="texto1"></textarea>
+               <label for="">Enunciado</label>
+               <textarea class="ckeditor campo" rows="8" id="ck" name="enunciado" placeholder="Enunciado"></textarea>
                <br>
-               <textarea class="campo" rows="4" cols="50" placeholder="Texto 2" name="texto2"></textarea>
+               <label for="">Alternativa 1</label>
+               <textarea class="ckeditor" rows="4" id="ck" cols="50" name="alt1"></textarea>
                <br>
-               <textarea class="campo" rows="4" cols="50" placeholder="Texto 3" name="texto3"></textarea>
+               <label for="">Alternativa 2</label>
+               <textarea class="ckeditor" rows="4" id="ck" cols="50" name="alt2"></textarea>
                <br>
-               <label for="file">Imagem PNG 1:</label><input type="file" name="img1" id="file"><br>
-               <label for="file">Imagem PNG 2:</label><input type="file" name="img2" id="file"><br>
-               <label for="file">Imagem PNG 3:</label><input type="file" name="img3" id="file"><br>
-               <textarea class="campo" rows="4" cols="50" placeholder="Pregunta" name="enunciado"></textarea>
+               <label for="">Alternativa 3</label>
+               <textarea class="ckeditor" rows="4" id="ck" cols="50" name="alt3"></textarea>
                <br>
-               <textarea class="campo" rows="3" cols="50" placeholder="Alternativa 1" name="alt1"></textarea>
+               <label for="">Alternativa 4</label>
+               <textarea class="ckeditor" rows="4" id="ck" cols="50" name="alt4"></textarea>
                <br>
-               <label for="file">Imagem PNG Alternativa 1:</label><input type="file" name="imgAlt1" id="file"><br>
-               <textarea class="campo" rows="3" cols="50" placeholder="Alternativa 2" name="alt2"></textarea>
+               <label for="">Alternativa 5</label>
+               <textarea class="ckeditor" rows="4" id="ck" cols="50" name="alt5"></textarea>
                <br>
-               <label for="file">Imagem PNG Alternativa 2:</label><input type="file" name="imgAlt2" id="file"><br>
-               <textarea class="campo" rows="3" cols="50" placeholder="Alternativa 3" name="alt3"></textarea>
-               <br>
-               <label for="file">Imagem PNG Alternativa 3:</label><input type="file" name="imgAlt3" id="file"><br>
-               <textarea class="campo" rows="3" cols="50" placeholder="Alternativa 4" name="alt4"></textarea>
-               <br>
-               <label for="file">Imagem PNG Alternativa 4:</label><input type="file" name="imgAlt4" id="file"><br>
-               <textarea class="campo" rows="3" cols="50" placeholder="Alternativa 5" name="alt5"></textarea>
-               <br>
-               <label for="file">Imagem PNG Alternativa 5:</label><input type="file" name="imgAlt5" id="file"><br>
                <select class="campo" name="altCorreta">
                   <option value="" selected>Alternativa Correta</option>
-                  <option value="alt1">Alternativa 1</option>
-                  <option value="alt2">Alternativa 2</option>
-                  <option value="alt3">Alternativa 3</option>
-                  <option value="alt4">Alternativa 4</option>
-                  <option value="alt5">Alternativa 5</option>
+                  <option value="1">Alternativa 1</option>
+                  <option value="2">Alternativa 2</option>
+                  <option value="3">Alternativa 3</option>
+                  <option value="4">Alternativa 4</option>
+                  <option value="5">Alternativa 5</option>
                </select>
-               <textarea class="campo" rows="3" cols="50" placeholder="Comentário" name="comentario"></textarea>
+               <label for="">Comentário</label>
+               <textarea class="ckeditor" rows="3" cols="50" id="ck" name="comentario"></textarea>
                <br>
-               <input type="text" class="campo" name="tema1" value="" placeholder="Tema 1" maxlength="15">
-               <br>
-               <input type="text" class="campo" name="tema2" value="" placeholder="Tema 2" maxlength="15">
-               <br>
-               <input type="text" class="campo" name="tema3" value="" placeholder="Tema 3" maxlength="15">
+               <select class="campo" name="sub">
+               <option value="">Disciplina</option>
+               <?php
+                  include_once("bd.php");
+                  $sql="SELECT * FROM p_sub";
+                  $ds=mysql_query($sql) or die(mysql_error());
+                  while($x=mysql_fetch_assoc($ds)){
+                     echo '<option value="'.$x['p_id'].'"">'.$x['p_name'].'</option>';
+                  }
+               ?>
+               </select>
                <br>
                <input type="submit" class="btn" value="Cadastrar">
             </form>
          </center>
-         <p style="color: #eee">Versão 1.1 r2 LAMPI</p>
+         <p style="color: #eee">VestiboLab r6 LAMPI</p>
       </div>
+      <script>
+      CKEDITOR.replace( 'x', { language: 'pt-br' });</script>
    </body>
 </html>

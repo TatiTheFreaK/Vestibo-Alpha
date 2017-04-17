@@ -1,1 +1,4 @@
-<br><p class="lead">PAGE = <?php echo $_GET['page']; ?> </p>
+<?php
+// PAGE 4: Desafios
+echo "EM BREVE";
+?>

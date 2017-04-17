@@ -1,1 +1,5 @@
-<br><p class="lead">PAGE = <?php echo $_GET['page']; ?> </p>
+<?php
+	// PAGE 0: Início
+	require_once('inc/FrontBehaviour.php');
+	$front = new Front();
+?>

@@ -1,3 +1,11 @@
+<?php
+	require_once('../accounts/config/config.php');
+	require_once('../accounts/classes/Login.php');
+	$login = new Login();
+	if ($login->isUserLoggedIn() == false) {
+	    Header('Location: ../entrar');
+	}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,31 +17,30 @@
 	    <link rel="icon" href="../img/favicon.ico">
 		<link href="../css/global-style.css" rel="stylesheet">
 		<link href="../css/button-style.css" rel="stylesheet">
-		<link href="../css/imput-style.css" rel="stylesheet">
+		<link href="../css/input-style.css" rel="stylesheet">
 		<link href="../css/question-style.css" rel="stylesheet">
-		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="js/menu.js"></script>
-		<script src="js/popup.js"></script>
+		<link href="../css/result-style.css" rel="stylesheet">
 		<title>Vestibo</title>
 	</head>
 	<body>
-	
+		<script src="../lib/jquery-1.10.2.js"></script>
+		<script src="../lib/progressbar.min.js"></script>
 		<div class="page">
 			<div class="header">
 				<div class="header-left">
-					<a onclick="toggle_menu()" href="#" class="header-item"><img src="in_img/menu-blue.png" class="menu-anchor" alt="Vestibo"></a>
+					<a onclick="toggle_menu()" href="#" class="header-item"><img src="../img/menu-blue.png" class="menu-anchor" alt="Vestibo"></a>
 					<a href="http://vestibo.com.br/" class="header-item"><img src="../img/nav-logo-blue.png" class="logo" alt="Vestibo"/></a>
 				</div>
 				<div class="header-right">
-					<a onclick="toggle_user_menu()" href="#" class="header-item"><img class="user-anchor" src="../img/user-image.png" alt="1"/></a>
+					<a onclick="toggle_user_menu()" href="#" class="header-item"><img class="user-anchor" <?php echo 'src="'.$_SESSION['user_image'].'"';?> alt="1"/></a>
 				</div>
 			</div>
 			<?php require_once("inc/menu.php"); ?>
 			<div id="u" class="user-esc">
 				<div class="user-container">
-					<p><?php echo ('<a>'.$_SESSION['user_name'].'</a>'); ?></p>
-					<a href="?page=4">Perfil</a>
-					<a href="?page=5">Sair</a>
+					<?php echo ('<a style="color:black;">'.$_SESSION['user_name'].'</a>'); ?>
+					<a href="?page=5">Perfil</a>
+					<a href="?logout">Sair</a>
 				</div>
 			</div>
 			<div class="body">
@@ -42,57 +49,33 @@
 						case '1': require_once("pvt/1.php"); break;
 						case '2': require_once("pvt/2.php"); break;
 						case '3': require_once("pvt/3.php"); break;
-						case '4': require_once("pvt/4.php"); break;
+						case '4': require_once("pvt/0.php"); break;
 						case '5': require_once("pvt/5.php"); break;
-						default: require_once("pvt/0.php"); break;} ?>
-				<div class="simple-container">
-					<div class="content">
-						<div class="q-box">
-							<div class="q-top-box">
-								<div class="top">
-									<p>Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box </p>	
-								</div>
-							</div>
-							<div class="q-alt-box">
-								<div class="alt">
-									<p>Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box </p>	
-								</div>
-							</div>
-							<div class="q-top-box">
-								<div class="top">
-									<p>Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box Tesste Q-Box </p>	
-								</div>
-							</div>
-						</div>
-						<div class="q-box">
-							<div class="q-top-box">
-								<div class="top">
-									<p>UNESP - 2014 (01)</p><hr>
-									<p>Esta é uma questão teste. Estão corretas:</p>	
-								</div>
-							</div>
-							<div class="q-alt-box">
-								<div class="alt">
-									<input type="radio" id="a1" name="01"></input><label for="a1">Apenas I e IV estão corretas.</label>
-									<input type="radio" id="a2" name="01"></input><label for="a2">Apenas I e V estão corretas.</label>
-									<input type="radio" id="a3" name="01"></input><label for="a3">Apenas I e II estão corretas.</label>
-									<input type="radio" id="a4" name="01"></input><label for="a4">Apenas I, IV e V estão corretas.</label>
-									<input type="radio" id="a5" name="01"></input><label for="a5">Todas estão corretas.</label>
-								</div>
-							</div>
-						</div>
-					</div>
+						default: require_once("pvt/0.php"); break;}
+				?>
+			</div>
+			<div class="footer">
+				<div class="f-left">
+					Vestibo &copy; 2015.
 				</div>
-				<div class="footer">
-					<div class="f-left">
-						Vestibo &copy; 2014.
-					</div>
-					<div class="f-right">
-						<a href="http://vestibo.com.br/termos">Termos e condições</a>
-						<a href="http://vestibo.com.br/quem-somos">Quem somos</a>
-					</div>
+				<div class="f-right">
+					<a href="http://vestibo.com.br/termos">Termos e condições</a>
+					<a href="http://vestibo.com.br/quem-somos">Quem somos</a>
 				</div>
 			</div>
 		</div>
+		<noscript>
+			<div id="popup">
+				<div class="popup-box">
+					<div class="popup-box-content">
+						<h1>Atenção!</h1>
+						<img style="padding: 5px; width: 30%; height: 30%;" src="../img/alerta.png">
+						<p class="lead">Seu navegador está com o Javascript desabilitado. Para utilizar este site, habilite-o.</p>
+					</div>
+				</div>
+			</div>
+		</noscript>
+		<script src="js/menu.js"></script>
+		<script src="js/popup.js"></script>
 	</body>
 </html>

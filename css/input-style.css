@@ -1,6 +1,6 @@
 /*
         VESTIBO ALPHA === Input Stylesheet === LAMPI
-        Última revisão: 06/01/2014
+        Última revisão: 06/01/2015
 */
 textarea.form-control {
   height: auto;
@@ -85,7 +85,7 @@ textarea.form-control {
   margin-left: 10px;
 }
 .piece{
-  width: auto;
+  width: 44% !important;
 }
 .form-group.half {
   padding-right: 0;

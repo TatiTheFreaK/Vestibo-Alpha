@@ -1,6 +1,7 @@
+<!--
 /*
         VESTIBO ALPHA === Menu Switch (Javascript) === LAMPI
-        Última revisão: 15/01/2014 (Matheus Baroni)
+        Última revisão: 15/01/2015 (Matheus Baroni)
 */
 function toggle_menu() {
 	classe = document.getElementById('m').className;
@@ -23,3 +24,4 @@ function toggle_user_menu() {
         =====        VESTIBO ALPHA === Menu Switch (Javascript) === LAMPI        =====
         ==============================================================================
 */
+//-->

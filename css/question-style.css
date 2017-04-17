@@ -1,6 +1,6 @@
 /*
         VESTIBO ALPHA === Question Stylesheet === LAMPI
-        Última revisão: 06/01/2014
+        Última revisão: 28/05/2015
 */
 .q-box{
 	width: 100%;
@@ -44,11 +44,9 @@
 	content: "";
 	clear: both;
 }
-
 input[type=radio] {
 	display:none;
 }
-
 label {
 	width: 100%;
 	cursor: pointer;
@@ -64,10 +62,12 @@ label {
 	background-color: #003A91;
 	color: #E5E5E5;
 }
-
 .alt input:checked + label {
 	background-color: #003A91;
 	color: #E5E5E5;
+}
+.top > img {
+	text-align: center;
 }
 /*
         =========================================================================

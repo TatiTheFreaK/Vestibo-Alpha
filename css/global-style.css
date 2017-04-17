@@ -1,6 +1,6 @@
 /*
         VESTIBO ALPHA === Global Stylesheet === LAMPI
-        Última revisão: 15/01/2014 (Matheus Baroni)
+        Última revisão: 28/05/2015 (Matheus Baroni)
 
 >>>     Indice:
         
@@ -14,6 +14,7 @@
         6. Login;
         7. Extras;
           7.1. Popup;
+          7.2. Perfil
 
 >>>     Cores:
 
@@ -351,6 +352,13 @@ li{
         === 4. Containers de texto ===
         ==============================
 */
+.msg-box{
+  width: 100%; height: auto;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+  color: #003A91;
+}
 .blue-container{
   color:#eee;
   background-color: #003A91;
@@ -458,7 +466,7 @@ li{
   position: fixed;
   width: 100%; height: 120%;
   background-color: rgba(0,0,0,0.7);
-  display: block;
+  display: none;
 }
 .popup-box{
   width: 550px;
@@ -469,6 +477,35 @@ li{
   border-radius: 5px;
   background-color: #FFF;
   padding: 15px;
+}
+.popup-form {
+  padding: 10px;
+  text-align: left;
+  background-color: #eee;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+.popup-alert {
+  text-align: left;
+  padding: 7px;
+  background-color: #eee;
+  color: #003A91;
+  border-radius: 5px;
+}
+/*
+        ===================
+        === 7.2. Perfil ===
+        ===================
+*/
+.profile-wrapper {
+  display: inline-block;
+  width: auto;
+}
+.profile-wrapper h1, .profile-wrapper h2 {
+  padding: 0 15px;
+}
+.profile-wrapper h2 {
+  margin: 0;
 }
 /*
         =======================================================================

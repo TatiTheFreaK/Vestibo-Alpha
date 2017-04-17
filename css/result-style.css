@@ -1,0 +1,40 @@
+/*
+        VESTIBO ALPHA === Result Stylesheet === LAMPI
+        Última revisão: 28/05/2015
+*/
+.progress {
+  height: 300px;
+  width: 300px;
+  left: 50%;
+  margin: 10px 0 10px -150px;
+}
+.progress > svg, .line > svg {
+    height: 100%;
+    display: block;
+}
+.progress p {
+  font-size: 4em;
+}
+.collun-wrapper {
+  display: inline-block;
+  width: 49.7%;
+  text-align: center;
+}
+.collun-wrapper p {
+  font-size: 1.5em;
+}
+.collun-wrapper h2 {
+  font-size: 2em;
+}
+.cwp {
+  font-size: 1.5em;
+}
+.cwh2 {
+  font-size: 2em;
+  color: #003A91;
+}
+/*
+        =========================================================================
+        =====        VESTIBO ALPHA === Result Stylesheet === LAMPI        =====
+        =========================================================================
+*/

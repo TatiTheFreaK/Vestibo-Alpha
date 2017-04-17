@@ -1,9 +1,11 @@
 /*
         VESTIBO ALPHA === Facebook Stylesheet === LAMPI
-        Última revisão: 06/01/2014
+        Última revisão: 06/01/2015
 */
 .like{
-	margin-left: 5px;
+	position: absolute;
+	top: 85px;
+	left: 5px;
 }
 /*
         =========================================================================

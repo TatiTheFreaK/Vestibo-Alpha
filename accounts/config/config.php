@@ -1,115 +1,114 @@
 <?php
-
-/**
- * Configuration for: Database Connection
- * This is the place where your database login constants are saved
- *
- * For more info about constants please @see http://php.net/manual/en/function.define.php
- * If you want to know why we use "define" instead of "const" @see http://stackoverflow.com/q/2447791/1114320
- *
- * DB_HOST: database host, usually it's "127.0.0.1" or "localhost", some servers also need port info
- * DB_NAME: name of the database. please note: database and database table are not the same thing
- * DB_USER: user for your database. the user needs to have rights for SELECT, UPDATE, DELETE and INSERT.
- *          by the way, it's bad style to use "root", but for development it will work.
- * DB_PASS: the password of the above user
- */
 define("DB_HOST", "mysql.hostinger.com.br");
-define("DB_NAME", "u762349182_teste");
-define("DB_USER", "u762349182_dbves");
-define("DB_PASS", "vestibo@vestibo");
-
+define("DB_NAME", "u395938104_1");
+define("DB_USER", "u395938104_adm");
+define("DB_PASS", "admpass");
 /**
- * Configuration for: Cookies
- * Please note: The COOKIE_DOMAIN needs the domain where your app is,
- * in a format like this: .mydomain.com
- * Note the . in front of the domain. No www, no http, no slash here!
- * For local development .127.0.0.1 or .localhost is fine, but when deploying you should
- * change this to your real domain, like '.mydomain.com' ! The leading dot makes the cookie available for
- * sub-domains too.
- * @see http://stackoverflow.com/q/9618217/1114320
- * @see http://www.php.net/manual/en/function.setcookie.php
- *
- * COOKIE_RUNTIME: How long should a cookie be valid ? 1209600 seconds = 2 weeks
- * COOKIE_DOMAIN: The domain where the cookie is valid for, like '.mydomain.com'
- * COOKIE_SECRET_KEY: Put a random value here to make your app more secure. When changed, all cookies are reset.
+ * Configuração para os cookies
+ * COOKIE_RUNTIME: quanto tempo o cookie é válido? 1209600 segundos = 2 semanas
+ * COOKIE_DOMAIN: o domínio onde o cookie irá "trabalhar"
+ * COOKIE_SECRET_KEY: uma chave secreta do cookie para deixar o app mais seguro, se for mudado todo o cookie é apagado...
  */
 define("COOKIE_RUNTIME", 1209600);
 define("COOKIE_DOMAIN", ".127.0.0.1");
 define("COOKIE_SECRET_KEY", "1gp@TMPS{+$78sfpMJFe-92s");
-
 /**
- * Configuration for: Email server credentials
- *
- * Here you can define how you want to send emails.
- * If you have successfully set up a mail server on your linux server and you know
- * what you do, then you can skip this section. Otherwise please set EMAIL_USE_SMTP to true
- * and fill in your SMTP provider account data.
- *
- * An example setup for using gmail.com [Google Mail] as email sending service,
- * works perfectly in August 2013. Change the "xxx" to your needs.
- * Please note that there are several issues with gmail, like gmail will block your server
- * for "spam" reasons or you'll have a daily sending limit. See the readme.md for more info.
- *
- * define("EMAIL_USE_SMTP", true);
- * define("EMAIL_SMTP_HOST", "ssl://smtp.gmail.com");
+ * Configuração para o email:
+ * define("EMAIL_USE_SMTP", true); se ele usa smtp ou não (hostinger não suporta...)
+ * define("EMAIL_SMTP_HOST", "ssl://smtp.gmail.com"); o smtp host...
  * define("EMAIL_SMTP_AUTH", true);
- * define("EMAIL_SMTP_USERNAME", "xxxxxxxxxx@gmail.com");
- * define("EMAIL_SMTP_PASSWORD", "xxxxxxxxxxxxxxxxxxxx");
- * define("EMAIL_SMTP_PORT", 465);
- * define("EMAIL_SMTP_ENCRYPTION", "ssl");
- *
- * It's really recommended to use SMTP!
- *
+ * define("EMAIL_SMTP_USERNAME", "xxxxxxxxxx@gmail.com"); email
+ * define("EMAIL_SMTP_PASSWORD", "xxxxxxxxxxxxxxxxxxxx"); a senha
+ * define("EMAIL_SMTP_PORT", 465); a porta usada
+ * define("EMAIL_SMTP_ENCRYPTION", "ssl"); e a encriptação do email ssl é dafault em todos...
  */
-define("EMAIL_USE_SMTP", false);
-define("EMAIL_SMTP_HOST", "mx1.hostinger.com.br");
+define("EMAIL_USE_SMTP", true);
+define("EMAIL_SMTP_HOST", "smtp.zoho.com");
 define("EMAIL_SMTP_AUTH", true);
-define("EMAIL_SMTP_USERNAME", "no-reply@myphpspace.zz.vc");
-define("EMAIL_SMTP_PASSWORD", "myphpspace.zz.vc");
-define("EMAIL_SMTP_PORT", 2525);
-define("EMAIL_SMTP_ENCRYPTION", "ssl");
-
+define("EMAIL_SMTP_USERNAME", "naoresponda@vestibo.com.br");
+define("EMAIL_SMTP_PASSWORD", "teste123");
+define("EMAIL_SMTP_PORT", 587);
+define("EMAIL_SMTP_ENCRYPTION", "tls");
 /**
- * Configuration for: password reset email data
- * Set the absolute URL to password_reset.php, necessary for email password reset links
+ * Configuração para o email de redefinição...
  */
-define("EMAIL_PASSWORDRESET_URL", "http://myphpspace.zz.vc/accounts/password_reset.php");
-define("EMAIL_PASSWORDRESET_FROM", "no-reply@myphpspace.zz.vc");
+define("EMAIL_PASSWORDRESET_URL", "http://vestibo.com.br/esqueci");
+define("EMAIL_PASSWORDRESET_FROM", "naoresponda@vestibo.com.br");
 define("EMAIL_PASSWORDRESET_FROM_NAME", "Vestibo");
-define("EMAIL_PASSWORDRESET_SUBJECT", "Reset your password from vestibo");
+define("EMAIL_PASSWORDRESET_SUBJECT", "Redefinir sua senha");
 define("EMAIL_PASSWORDRESET_CONTENT", "Clique aqui para redefinir sua senha:");
-
 /**
- * Configuration for: verification email data
- * Set the absolute URL to register.php, necessary for email verification links
+ * Configuração para o email de ativação
  */
-define("EMAIL_VERIFICATION_URL", "http://myphpspace.zz.vc/accounts/register.php");
-define("EMAIL_VERIFICATION_FROM", "no-reply@myphpspace.zz.vc");
-define("EMAIL_VERIFICATION_FROM_NAME", "vestibo");
-define("EMAIL_VERIFICATION_SUBJECT", "Activation for Vestibo");
+define("EMAIL_VERIFICATION_URL", "http://vestibo.com.br/cadastrar");
+define("EMAIL_VERIFICATION_FROM", "naoresponda@vestibo.com.br");
+define("EMAIL_VERIFICATION_FROM_NAME", "Vestibo");
+define("EMAIL_VERIFICATION_SUBJECT", "Ativação para Vestibo");
 define("EMAIL_VERIFICATION_CONTENT", "Clique aqui para ativar sua conta:");
-
-/**
- * Configuration for: Hashing strength
- * This is the place where you define the strength of your password hashing/salting
- *
- * To make password encryption very safe and future-proof, the PHP 5.5 hashing/salting functions
- * come with a clever so called COST FACTOR. This number defines the base-2 logarithm of the rounds of hashing,
- * something like 2^12 if your cost factor is 12. By the way, 2^12 would be 4096 rounds of hashing, doubling the
- * round with each increase of the cost factor and therefore doubling the CPU power it needs.
- * Currently, in 2013, the developers of this functions have chosen a cost factor of 10, which fits most standard
- * server setups. When time goes by and server power becomes much more powerful, it might be useful to increase
- * the cost factor, to make the password hashing one step more secure. Have a look here
- * (@see https://github.com/panique/php-login/wiki/Which-hashing-&-salting-algorithm-should-be-used-%3F)
- * in the BLOWFISH benchmark table to get an idea how this factor behaves. For most people this is irrelevant,
- * but after some years this might be very very useful to keep the encryption of your database up to date.
- *
- * Remember: Every time a user registers or tries to log in (!) this calculation will be done.
- * Don't change this if you don't know what you do.
- *
- * To get more information about the best cost factor please have a look here
- * @see http://stackoverflow.com/q/4443476/1114320
- *
- * This constant will be used in the login and the registration class.
- */
 define("HASH_COST_FACTOR", "10");
+/**
+ * Caminho para a gravação das imagens de perfil dos usuários
+ */
+define('HTTP_IMAGE_PATH', 'http://vestibo.com.br/img/users/');
+define('LOCAL_IMAGE_PATH', '../img/users/');
+define('HTTP_DEFAULT_IMAGE_PATH', 'http://vestibo.com.br/img/user-image.png');
+/**
+ * Definições para as classes Login e Registration
+ */
+define('MESSAGE_ACCOUNT_NOT_ACTIVATED', 'Sua conta ainda não foi ativada.<br>Favor clicar no link de confirmação enviado por email.<br><a href="../entrar.php">Ir para o Login.</a>');
+define("MESSAGE_CAPTCHA_WRONG", "Captcha incorreto!");
+define("MESSAGE_COOKIE_INVALID", "Cookie inválido");
+define("MESSAGE_DATABASE_ERROR", "Erro de conexão com o bd.");
+define("MESSAGE_EMAIL_ALREADY_EXISTS", "Este e-mail já está registrado. Tente usar a \"recuperação de senha\".");
+define("MESSAGE_EMAIL_CHANGE_FAILED", "Desculpe, a alteração de e-mail falhou.");
+define("MESSAGE_EMAIL_CHANGED_SUCCESSFULLY", "Seu e-mail foi alterado com sucesso. Novo e-mail é ");
+define("MESSAGE_EMAIL_EMPTY", "Email não pode ficar em branco");
+define("MESSAGE_EMAIL_INVALID", "Seu e-mail possui um formato inválido");
+define("MESSAGE_EMAIL_SAME_LIKE_OLD_ONE", "Desculpe, este email é o mesmo do atual. Por favor informe outro email.");
+define("MESSAGE_EMAIL_TOO_LONG", "Email não pode ter mais de 64 caracteres.");
+define("MESSAGE_LINK_PARAMETER_EMPTY", "Link vazio.");
+define("MESSAGE_LOGGED_OUT", "Você saiu..");
+define("MESSAGE_LOGIN_FAILED", "Login falhou.");
+define("MESSAGE_NASCIMENTO_EMPTY", "Digite a data de seu nascimento...");
+define("MESSAGE_NOME_EMPTY", "Digite seu Nome...");
+define("MESSAGE_OLDIMAGE_DELETE_FAILED", "Erro ao remover a imagem atual.");
+define("MESSAGE_OLD_PASSWORD_WRONG", "Sua senha antiga está incorreta.");
+define("MESSAGE_PASSWORD_BAD_CONFIRM", "As senhas informadas não coincidem");
+define("MESSAGE_PASSWORD_CHANGE_FAILED", "Desculpe, a alteração de senha falhou.");
+define("MESSAGE_PASSWORD_CHANGED_SUCCESSFULLY", "Senha alterada com sucesso!");
+define("MESSAGE_PASSWORD_EMPTY", "Senha está em branco");
+define("MESSAGE_PASSWORD_RESET_MAIL_FAILED", "Email de recuperação de senha não foi enviado! Erro: ");
+define("MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT", "Email de recuperação de senha enviado!");
+define("MESSAGE_PASSWORD_TOO_SHORT", "Tamanho mínimo da senha é de 6 caracteres");
+define("MESSAGE_PASSWORD_WRONG", "Senha incorreta. Tente novamente.");
+define("MESSAGE_PASSWORD_WRONG_3_TIMES", "Você inseriu uma senha incorreta 3 vezes ou mais. Favor aguardar 30 segundos e tente novamente.");
+define("MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL", "Desculpe, nenhum id encontrado...");
+define("MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL", 'Ativação bem sucedida!<br>Você pode entrar agora!<a href="entrar.php">Ir para o Login.</a>');
+define("MESSAGE_REGISTRATION_FAILED", "Desculpe, seu registro falhou. Volte e tente novamente.");
+define("MESSAGE_RESET_LINK_HAS_EXPIRED", "Este link de recuperação expirou. Use o link sempre em menos de uma hora.");
+define("MESSAGE_SOBRENOME_EMPTY", "Digite seu Sobrenome...");
+define("MESSAGE_VERIFICATION_MAIL_ERROR", "Desculpe, não foi possível enviar um email de verificação. Sua conta não foi criada.");
+define("MESSAGE_VERIFICATION_MAIL_NOT_SENT", "Email de verificação não foi enviado! Erro: ");
+define("MESSAGE_VERIFICATION_MAIL_SENT", "Sua conta foi criada e enviamos um email.<br>Clique no link de verificação deste email.");
+define("MESSAGE_USER_DOES_NOT_EXIST", "Este usuário não existe");
+define("MESSAGE_USERNAME_BAD_LENGTH", "Usuário não pode conter menos que 2 caracteres ou mais que 64");
+define("MESSAGE_USERNAME_CHANGE_FAILED", "Desculpe, a alteração do nome de usuário falhou");
+define("MESSAGE_USERNAME_CHANGED_SUCCESSFULLY", "Seu nome de usuário foi alterado com sucesso. Novo nome de usuário é ");
+define("MESSAGE_USERNAME_EMPTY", "Campo nome de usuário está vazio");
+define("MESSAGE_USERNAME_EXISTS", "Desculpe, este nome de usuário já foi utilizado. Escolha outro.");
+define("MESSAGE_USERNAME_INVALID", "Nome de usuário fora do padrão: somente a-Z e números são permitidos, 2 a 64 caracteres");
+define("MESSAGE_USERNAME_SAME_LIKE_OLD_ONE", "Desculpe, o nome de usuário é o mesmo atual. Escolha outro.");
+define("MESSAGE_IMAGE_TOO_BIG", "A imagem é muito grande.<br>Por favor, escolha uma imagem de até 500kb.");
+define("MESSAGE_UNSUPPORTED_IMAGE", "Desculpe, mas este formato de imagem não é suportado");
+define("MESSAGE_PROCESSING_IMAGE_FAILURE", "Erro ao processar a imagem.");
+define("MESSAGE_IMAGE_CHANGE_FAILED", "Desculpe, mas não foi possível enviar a imagem para o banco de dados.");
+define("MESSAGE_IMAGE_CHANGED_SUCCESSFULLY", "Imagem alterada com sucesso.");
+define("WORDING_REGISTRATION_CAPTCHA", "Digite os caracteres");
+/**
+ * Definições para as classes SortQuestions e FormBehaviour
+ */
+define("WARNING_QUESTIONS_EXCEPTION", '<b>Aviso: Numero de questoes pedidas excede o numero de questoes disponiveis no servidor!</b><br>');
+define("ERROR_DB", '<b>Problema ao acessar o Banco de Dados!</b><br>');
+define("ERROR_DB_CONN", '<b>Problema de conexão com o Banco de Dados!</b><br>');
+define("ERROR_GET_NUMBER", '<b>Quantas questoes?</b><br>');
+?>
